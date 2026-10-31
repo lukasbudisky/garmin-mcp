@@ -7,7 +7,7 @@ import (
 )
 
 type DailySleepInput struct {
-	Date string `json:"date,omitempty" jsonschema:"date for daily sleep results"`
+	Date string `json:"date,omitempty" jsonschema:"date for daily sleep statistics results"`
 }
 
 type DailySleepOutput struct {

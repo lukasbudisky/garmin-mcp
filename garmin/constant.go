@@ -19,4 +19,10 @@ const (
 
 	// Daily sleep endpoint
 	endpoint_daily_sleep = "/sleep-service/sleep/dailySleep"
+
+	// Daily HRV endpoint
+	endpoint_daily_hrv = "/hrv-service/hrv"
+
+	// Daily user summary endpoint
+	endpoint_daily_user_summary = "/usersummary-service/usersummary/daily"
 )

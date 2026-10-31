@@ -25,7 +25,7 @@ make build
 
 ### Run
 ```
-API_KEY=op://Private/Garmin/Token ./garmin-mcp
+API_KEY=$(op://Private/Garmin/Token) ./garmin-mcp
 ```
 
 ### Tests
