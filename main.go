@@ -70,7 +70,7 @@ func stdioServe(cmd *cobra.Command, args []string) {
 		log.Fatal(err)
 	}
 
-	err = mcp.StdioServe(&garmin.Auth{Token: token}, name, version, false)
+	err = mcp.StdioServe(token, name, version, false)
 	if err != nil {
 		log.Panic(err)
 	}
@@ -89,7 +89,7 @@ func httpServe(cmd *cobra.Command, args []string) {
 	errCh := make(chan error, 1)
 
 	go func() {
-		errCh <- mcp.HttpServe(&garmin.Auth{Token: token}, name, version, httpAddress, false)
+		errCh <- mcp.HttpServe(token, name, version, httpAddress, false)
 		if err != nil {
 			log.Panic(err)
 		}

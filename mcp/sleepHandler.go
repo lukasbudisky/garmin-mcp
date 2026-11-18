@@ -19,7 +19,7 @@ func dailySleepHandler(ctx context.Context, req *mcp.CallToolRequest, input Dail
 	*DailySleepOutput,
 	error,
 ) {
-	dailySleep, err := garminAuth.GetDailySleep(input.Date)
+	dailySleep, err := garminClient.Sleep.Daily(input.Date)
 	if err != nil {
 		return nil, nil, err
 	}

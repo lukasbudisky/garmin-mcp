@@ -8,7 +8,7 @@ import (
 	gomcp "github.com/modelcontextprotocol/go-sdk/mcp"
 )
 
-var garminAuth *garmin.Auth
+var garminClient *garmin.GarminClient
 
 func server(name string, version string) *gomcp.Server {
 	mcp := gomcp.Implementation{
@@ -19,8 +19,8 @@ func server(name string, version string) *gomcp.Server {
 	return gomcp.NewServer(&mcp, nil)
 }
 
-func HttpServe(auth *garmin.Auth, name string, version string, address string, toolCapabilities bool) error {
-	garminAuth = auth
+func HttpServe(token *string, name string, version string, address string, toolCapabilities bool) error {
+	garminClient = garmin.NewGarminClient(token)
 
 	server := server(name, version)
 
@@ -35,8 +35,8 @@ func HttpServe(auth *garmin.Auth, name string, version string, address string, t
 	return nil
 }
 
-func StdioServe(auth *garmin.Auth, name string, version string, toolCapabilities bool) error {
-	garminAuth = auth
+func StdioServe(token *string, name string, version string, toolCapabilities bool) error {
+	garminClient = garmin.NewGarminClient(token)
 
 	server := server(name, version)
 

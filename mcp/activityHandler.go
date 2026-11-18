@@ -23,7 +23,7 @@ type ActivityInput struct {
 }
 
 type ActivityOutput struct {
-	Activity *[]garmin.Activity
+	Activity []garmin.ActivityOutput
 }
 
 type AllActivityDateFilterInput struct {
@@ -34,7 +34,7 @@ type AllActivityDateFilterInput struct {
 func activitiesHandler(ctx context.Context, req *gomcp.CallToolRequest, input ActivityInput) (
 	*gomcp.CallToolResult, *ActivityOutput, error) {
 
-	activities, err := garminAuth.SearchActivities(input.Start, input.Limit)
+	activities, err := garminClient.Activity.Search(input.Start, input.Limit)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -45,7 +45,7 @@ func activitiesHandler(ctx context.Context, req *gomcp.CallToolRequest, input Ac
 func allActivitiesCountHandler(ctx context.Context, req *gomcp.CallToolRequest, input AllActivityCountInput) (
 	*gomcp.CallToolResult, *AllActivityCountOutput, error) {
 
-	activitiesCount, err := garminAuth.CountAllActivities(input.Limit)
+	activitiesCount, err := garminClient.Activity.CountAll(input.Limit)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -67,7 +67,8 @@ func activitiesDateFilterHandler(ctx context.Context, req *gomcp.CallToolRequest
 	if err != nil {
 		return nil, nil, fmt.Errorf("activities date filter handler end time parse error: %v", err)
 	}
-	activities, err := garminAuth.ActivitiesDateFilter(start, end)
+
+	activities, err := garminClient.Activity.DateFilter(start, end)
 	if err != nil {
 		return nil, nil, err
 	}
