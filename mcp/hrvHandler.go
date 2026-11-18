@@ -19,7 +19,7 @@ func dailyHrvHandler(ctx context.Context, req *mcp.CallToolRequest, input DailyS
 	*DailyHrvOutput,
 	error,
 ) {
-	dailyHrv, err := garminAuth.GetDailyHrv(input.Date)
+	dailyHrv, err := garminClient.Hrv.Daily(input.Date)
 	if err != nil {
 		return nil, nil, err
 	}

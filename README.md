@@ -17,9 +17,6 @@ This project provides a bridge between Garmin Connect personal data and MCP-comp
 ## Example Usage
 
 Tested with model **qwen/qwen3.8-27b**
-```
-
-```
 
 ## Development
 

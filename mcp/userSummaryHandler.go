@@ -19,7 +19,7 @@ func dailyUserSummaryHandler(ctx context.Context, req *mcp.CallToolRequest, inpu
 	*DailyUserSummaryOutput,
 	error,
 ) {
-	dailyUserSummary, err := garminAuth.GetDailySleep(input.Date)
+	dailyUserSummary, err := garminClient.Sleep.Daily(input.Date)
 	if err != nil {
 		return nil, nil, err
 	}
